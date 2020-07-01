@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
+
+import com.UserManagement.LoginValidator;
 
 /**
  * Servlet implementation class UserLogin
@@ -40,8 +43,11 @@ public class UserLogin extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		PrintWriter out = response.getWriter();
+		
+		LoginValidator lv = new LoginValidator();
+		JSONObject jobj = lv.validateUser(request.getParameter("user"), request.getParameter("password"));
 
-		out.println("sample");
+		out.println(jobj);
 
 	}
 

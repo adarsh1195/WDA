@@ -25,9 +25,11 @@ public class LoginValidator {
 	public static String failure = "Login failed";
 	public static String noUser = "User does not exist";
 
-	private JSONObject validateUser(String user, String password) {
+	public JSONObject validateUser(String user, String password) {
 
-		Where select = QueryBuilder.select().all().from(CassandraConstants.users)
+		JSONObject jobj = new JSONObject();
+
+		Where select = QueryBuilder.select().all().from(CassandraConstants.reg_users)
 				.where(QueryBuilder.eq("userid", user));
 
 		Session session = SessionManager.getSession(CassandraConstants.wda_keyspace);
@@ -39,22 +41,31 @@ public class LoginValidator {
 		if (regUsr.size() == 0) {
 
 			System.out.println("User does not exist");
+
+			jobj.put("Message", noUser);
 		} else {
 
 			if (regUsr.get(0).getPassword().equals(password)) {
 
 				System.out.println("Login Successfull");
+				jobj.put("Message", success);
+				jobj.put("UserName", regUsr.get(0).getUsername());
+				jobj.put("UserType", regUsr.get(0).getUsertype());
+				jobj.put("LastLogin", regUsr.get(0).getLastlogin());
 
 			}
 
 			else {
 
 				System.out.println("Login Failed");
+				jobj.put("Message", failure);
 			}
 
 		}
 
-		return null;
+		// { "" }
+
+		return jobj;
 	}
 
 	public static void main(String[] args) {

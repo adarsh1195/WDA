@@ -2,6 +2,7 @@ package com.CassandraOps;
 
 import java.util.Date;
 
+import com.AppConstants.CassandraConstants;
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.LocalDate;
 import com.datastax.driver.core.Session;
@@ -10,7 +11,7 @@ public class Initialization {
 
 	public static void main(String[] args) {
 
-		Cluster cluster = Cluster.builder().addContactPoint("127.0.0.1").build();
+		Cluster cluster = Cluster.builder().addContactPoint(CassandraConstants.cassandra_host).build();
 
 		Date date = new java.util.Date();
 		LocalDate localdate = LocalDate.fromMillisSinceEpoch(date.getTime());
@@ -20,11 +21,11 @@ public class Initialization {
 		String query = "CREATE KEYSPACE warranty_analysis WITH replication "
 				+ "= {'class':'SimpleStrategy', 'replication_factor':1};";
 
-		// session.execute(query);
+		 session.execute(query);
 
 		String query2 = "CREATE TABLE warranty_analysis.reg_users( userid text PRIMARY KEY," + "lastlogin timestamp, "
 				+ "password text," + "username text," + "usertype text)";
-		// session.execute(query2);
+		 session.execute(query2);
 
 		String query3 = "Insert into warranty_analysis.reg_users (userid, lastlogin, password, username"
 				+ ", usertype) values ('admin', '" + localdate + "', 'admin', 'admin', 'admin')";
