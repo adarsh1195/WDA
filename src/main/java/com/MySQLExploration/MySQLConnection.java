@@ -52,7 +52,7 @@ public class MySQLConnection {
 
 	public String getConnectionUrl(Map<String, String> config) {
 
-		return "jdbc:mysql://" + config.get("host") + ":" + config.get("port");
+		return "jdbc:mysql://" + config.get("host") + ":" + config.get("port")+"/"+config.get("database");
 
 	}
 

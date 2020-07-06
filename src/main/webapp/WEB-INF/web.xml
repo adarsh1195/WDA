@@ -22,6 +22,18 @@
   	<description></description>
   	<servlet-class>com.Services.GetReports</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AvailableSources</servlet-name>
+  	<display-name>AvailableSources</display-name>
+  	<description></description>
+  	<servlet-class>com.Services.AvailableSources</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>GetSalesReport</servlet-name>
+  	<display-name>GetSalesReport</display-name>
+  	<description></description>
+  	<servlet-class>com.Services.GetSalesReport</servlet-class>
+  </servlet>
 
   <servlet-mapping>
   	<servlet-name>Test</servlet-name>
@@ -34,6 +46,14 @@
   <servlet-mapping>
   	<servlet-name>GetReports</servlet-name>
   	<url-pattern>/GetReports</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AvailableSources</servlet-name>
+  	<url-pattern>/AvailableSources</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GetSalesReport</servlet-name>
+  	<url-pattern>/GetSalesReport</url-pattern>
   </servlet-mapping>
 
 
