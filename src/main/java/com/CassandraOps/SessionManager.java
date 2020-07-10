@@ -52,6 +52,7 @@ public class SessionManager {
 	private static void createCluster() {
 
 		cluster = Cluster.builder().addContactPoints(CassandraConstants.cassandra_host).build();
+		//cluster = Cluster.builder().addContactPoint("142.102.27.102").withPort(9042).build();
 
 	}
 
@@ -59,9 +60,9 @@ public class SessionManager {
 		// TODO Auto-generated method stub
 
 		SessionManager sm = new SessionManager();
-		Session s = sm.getSession("warranty_analysis");
+		Session s = sm.getSession("user_profile");
 		System.out.println(s.getLoggedKeyspace());
-		String query = "select * from reg_users";
+		String query = "select * from user_source";
 		ResultSet rs = s.execute(query);
 		// System.out.println(rs.all().size());
 		List<Row> j = rs.all();
