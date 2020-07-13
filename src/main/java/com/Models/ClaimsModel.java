@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Iterator;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,8 +28,28 @@ public class ClaimsModel {
 		jobj.put("Total claims by category", getTotalClaims(conn));
 
 		jobj.put("Claim amount by category", claimAmountbyCategory(conn));
-		jobj.put("Geography by category", claimsByGeography(conn));
-		jobj.put("Statistics",totalAmountbyCategory(conn));
+		
+		
+		JSONObject geo =claimsByGeography(conn);
+		JSONObject stats = totalAmountbyCategory(conn);
+	
+		Iterator<String> k = stats.keys();
+		
+		JSONObject consolidated = new JSONObject();
+		
+		
+		while (k.hasNext()) {
+			
+			String cat = k.next();
+			consolidated.put(cat, new JSONObject().put("Statistics", stats.getJSONObject(cat)).put("Geography", geo.getJSONArray(cat)));
+			
+			
+			
+		}
+		
+		jobj.put("Category", consolidated);
+		
+		
 		// jobj.put(key, value)
 
 		System.out.println(jobj);

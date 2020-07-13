@@ -52,6 +52,18 @@
   	<description></description>
   	<servlet-class>com.Services.GetClaimsSummary</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>GetSalesReport2</servlet-name>
+  	<display-name>GetSalesReport2</display-name>
+  	<description></description>
+  	<servlet-class>com.Services.GetSalesReport2</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>GetSalesGraph</servlet-name>
+  	<display-name>GetSalesGraph</display-name>
+  	<description></description>
+  	<servlet-class>com.Services.GetSalesGraph</servlet-class>
+  </servlet>
 
   <servlet-mapping>
   	<servlet-name>Test</servlet-name>
@@ -84,6 +96,14 @@
   <servlet-mapping>
   	<servlet-name>GetClaimsSummary</servlet-name>
   	<url-pattern>/GetClaimsSummary</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GetSalesReport2</servlet-name>
+  	<url-pattern>/GetSalesReport2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GetSalesGraph</servlet-name>
+  	<url-pattern>/GetSalesGraph</url-pattern>
   </servlet-mapping>
 
 
