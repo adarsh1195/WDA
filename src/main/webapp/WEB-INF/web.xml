@@ -64,6 +64,12 @@
   	<description></description>
   	<servlet-class>com.Services.GetSalesGraph</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>GetClaimDetails</servlet-name>
+  	<display-name>GetClaimDetails</display-name>
+  	<description></description>
+  	<servlet-class>com.Services.GetClaimDetails</servlet-class>
+  </servlet>
 
   <servlet-mapping>
   	<servlet-name>Test</servlet-name>
@@ -104,6 +110,10 @@
   <servlet-mapping>
   	<servlet-name>GetSalesGraph</servlet-name>
   	<url-pattern>/GetSalesGraph</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GetClaimDetails</servlet-name>
+  	<url-pattern>/GetClaimDetails</url-pattern>
   </servlet-mapping>
 
 
